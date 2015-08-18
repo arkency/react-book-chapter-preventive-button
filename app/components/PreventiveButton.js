@@ -9,6 +9,7 @@ class PreventiveButton extends React.Component {
     this.enable = this.enable.bind(this);
     this.disable = this.disable.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   enable() {
@@ -21,7 +22,10 @@ class PreventiveButton extends React.Component {
 
   handleButtonClick() {
     this.disable();
-    this.props.action();
+    this.props.action(this);
+  }
+
+  reset() {
     this.enable();
   }
 
