@@ -1,3 +1,4 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import PreventiveButton from './components/PreventiveButton';
 
