@@ -20,7 +20,9 @@ class PreventiveButton extends React.Component {
 
   render () {
     let { disabled } = this.state;
-    return <Button bsStyle='primary' disabled={disabled}>Submit</Button>;
+    let { label } = this.props;
+    let text = (disabled) ? "Submitting..." : label;
+    return <Button bsStyle='primary' disabled={disabled}>{text}</Button>;
   }
 }
 
