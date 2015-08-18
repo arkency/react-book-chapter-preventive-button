@@ -8,6 +8,7 @@ class PreventiveButton extends React.Component {
 
     this.enable = this.enable.bind(this);
     this.disable = this.disable.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   enable() {
@@ -18,11 +19,17 @@ class PreventiveButton extends React.Component {
     this.setState( { disabled: true } );
   }
 
+  handleButtonClick() {
+    this.disable();
+    this.props.action();
+    this.enable();
+  }
+
   render () {
     let { disabled } = this.state;
     let { label } = this.props;
     let text = (disabled) ? "Submitting..." : label;
-    return <Button bsStyle='primary' disabled={disabled}>{text}</Button>;
+    return <Button bsStyle='primary' disabled={disabled} onClick={this.handleButtonClick}>{text}</Button>;
   }
 }
 

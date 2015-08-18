@@ -5,4 +5,8 @@ import PreventiveButton from './components/PreventiveButton';
 const APP_ROOT = document.createElement('div');
 document.body.appendChild(APP_ROOT);
 
-React.render(<PreventiveButton label="Submit"/>, APP_ROOT);
+function action(component) {
+  console.log("Done");
+}
+
+React.render(<PreventiveButton label="Submit" action={action} />, APP_ROOT);
