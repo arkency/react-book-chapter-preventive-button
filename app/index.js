@@ -1,5 +1,6 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PreventiveButton from './components/PreventiveButton';
 
 const APP_ROOT = document.createElement('div');
@@ -14,4 +15,4 @@ function actionFinished(component) {
   component.reset();
 }
 
-React.render(<PreventiveButton label="Submit" action={action} />, APP_ROOT);
+ReactDOM.render(<PreventiveButton label="Submit" action={action} />, APP_ROOT);
