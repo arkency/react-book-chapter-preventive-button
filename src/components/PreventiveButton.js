@@ -1,40 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-class PreventiveButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { disabled: false };
+function PreventiveButton(props) {
+  const [disabled, setDisabled] = useState(false);
 
-    this.enable = this.enable.bind(this);
-    this.disable = this.disable.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-    this.reset = this.reset.bind(this);
+  const disable = () => {
+    setDisabled(true);
   }
 
-  enable() {
-    this.setState( { disabled: false } );
+  const enable = () => {
+    setDisabled(false);
   }
 
-  disable() {
-    this.setState( { disabled: true } );
+  const handleButtonClick = () => {
+    disable();
+    props.action(reset);
   }
 
-  handleButtonClick() {
-    this.disable();
-    this.props.action(this);
+  const reset = () => {
+    enable();
   }
 
-  reset() {
-    this.enable();
-  }
-
-  render () {
-    let { disabled } = this.state;
-    let { label } = this.props;
-    let text = (disabled) ? "Submitting..." : label;
-    return <Button bsStyle='primary' disabled={disabled} onClick={this.handleButtonClick}>{text}</Button>;
-  }
+  const { label } = props;
+  const text = (disabled) ? "Submitting..." : label;
+  return <Button bsstyle='primary' disabled={disabled} onClick={handleButtonClick}>{text}</Button>;
 }
 
 export default PreventiveButton;

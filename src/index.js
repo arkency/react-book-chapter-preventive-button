@@ -3,15 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PreventiveButton from "./components/PreventiveButton";
 
-function action(component) {
+function action(actionCallback) {
   setTimeout(function() {
-    actionFinished(component);
+    actionFinished(actionCallback);
   }, 2000);
 }
 
-function actionFinished(component) {
+function actionFinished(actionCallback) {
   console.log("Done");
-  component.reset();
+  actionCallback();
 }
 
 ReactDOM.render(
